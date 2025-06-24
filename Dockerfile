@@ -4,6 +4,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
+ARG DB_URL
+ENV DB_URL=${DB_URL}
+RUN python populatedb.py
+
 ENV DATABASE_URL=""
 EXPOSE 8080
 

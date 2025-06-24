@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 from app.models import Base, Product, User, Cart, CartItem, Order, OrderItem, Payment
 from datetime import datetime
 
-DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/ecommerce"
+DATABASE_URL = os.getenv("DB_URL", "postgresql://postgres:postgres@localhost:5432/ecommerce")
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
